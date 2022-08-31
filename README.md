@@ -2,5 +2,5 @@
 ## usage
 
 ```
-    video-caption {source} {text} {output}
+    nix run github:xavierzwirtz/video-caption {source} {text} {output}
 ```

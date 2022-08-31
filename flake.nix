@@ -6,7 +6,7 @@
   outputs = { self, nixpkgs, flake-utils }:
     flake-utils.lib.eachDefaultSystem (system:
       let pkgs = nixpkgs.legacyPackages.${system}; in
-      {
+      rec {
         packages = rec {
           video-caption = pkgs.writeShellApplication {
             name ="video-caption";
@@ -63,6 +63,10 @@
           };
           default = video-caption;
         };
+        apps = {
+          video-caption = flake-utils.lib.mkApp { drv = packages.video-caption; };
+        };
+        defaultApp = packages.video-caption;
       }
     );
 }
